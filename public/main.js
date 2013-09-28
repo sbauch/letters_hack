@@ -10,7 +10,8 @@ function closeGameDialog(){
 			game = response;
 			
 			gameCode = response.short_code;
-			var inHTML = gameCode;
+			var inHTML = '<div class="dialogBack"></div>'
+			inHTML += gameCode;
 			inHTML += "<br/>";
 			inHTML += "Enter this code into your device"
 			inHTML += "<br><br>"

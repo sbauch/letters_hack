@@ -41,8 +41,11 @@
 body{
 	font-family: Lato;
 	background: url('http://jlane.co/ios7-icons/images/bg6.jpg');
+	background-size: cover;
 }
 #clock{
+	color: transparent;
+	opacity: 0;
 	font-weight: bold;
 	color: white;
 	font-size: 30px;

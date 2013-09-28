@@ -30,6 +30,9 @@ function closeDialog(){
 			for( var i = 0; i < word.length; i++ )
 				$('.letter-container').append( '<p class="letters">' + word[i] + '</p>');
 
+			$('.word_title').html(word);
+			$('.def').html('');
+
 			$('#startGame').fadeOut();
 		}
 	});
@@ -45,4 +48,6 @@ function parseMessage( m )
 	{
 		$('.letter-container').append( '<p class="letters">' + word[i] + '</p>');
 	}
+	$('.word_title').html(word);
+	$('.def').html(m.current_def);
 }

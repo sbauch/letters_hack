@@ -5,8 +5,23 @@
 	box-sizing: border-box;
 	padding: 10px;
 	left: 5%;
-	background: lightblue;
+	background: transparent;
 	height: 50%;
+}
+.dialogBack{
+	background: rgba(255,255,255,0.90);
+	-webkit-filter: blur(2px);
+	height: 100%;
+	width: 100%;
+	z-index: 99;
+	position: relative;
+	top: 0;
+	left: 0;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.5), 
+	/* Exterior Shadow */ inset 0 1px rgba(255,255,255,0.3), 
+	/* Top light Line */ inset 0 10px rgba(255,255,255,0.2), 
+	/* Top Light Shadow */ inset 0 10px 20px rgba(255,255,255,0.25), 
+	/* Sides Light Shadow */ inset 0 -15px 30px rgba(0,0,0,0.3);
 }
 #startGame h1{
 	width: 100%;
@@ -15,15 +30,23 @@
 #startGame button{
 	position: relative;
 	width: 20%;
-	top: 10%;
+	top: -90%;
 	left: 40%;
+}
+.front{
+	z-index: 999;
+	position: relative;
+	top: -90%;
 }
 body{
 	font-family: Lato;
+	background: url('http://jlane.co/ios7-icons/images/bg6.jpg');
 }
 #clock{
-	width: 30%;
-	background: lightgray;
+	font-weight: bold;
+	color: white;
+	font-size: 30px;
+	margin-left: 10px;
 }
 #word{
 	width: 85%;
@@ -31,17 +54,22 @@ body{
 	margin: 0 auto;
 }
 .letter-container{
-	background: red;
 	padding: 20% 0;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.5), 
+	/* Exterior Shadow */ inset 0 1px rgba(255,255,255,0.3), 
+	/* Top light Line */ inset 0 10px rgba(255,255,255,0.2), 
+	/* Top Light Shadow */ inset 0 10px 20px rgba(255,255,255,0.25), 
+	/* Sides Light Shadow */ inset 0 -15px 30px rgba(0,0,0,0.3);
 }
 .letters{
 	border: solid white 1px;
-	background: green;
+	background: rgba(155, 89, 182,0.35);
 	padding: 2.5vw 2.5vw;
 	width: 20%;
 	text-align: center;
 	display: inline;
 	margin: 0 auto;
+	border-radius: 7px;
 }
 #bottomContainer{
 	position: absolute;
@@ -49,16 +77,24 @@ body{
 	width: 100%;
 }
 #word_def{
+	color: white;
 	display: inline-table;
 	width: 30%;
-	left: 0;
-	background: lightgreen;
+	background: transparent;
+	margin-left: 5%;
 }
 #scoreboard{
+	margin-right: 5%;
 	float: right;
 	display: inline-table;
 	width: 30%;
 	position: relative;
-	right: 0;
-	background: lightblue;
+	color: white;
+	text-align: right;
+}
+.word_title{
+	font-size: 20px;
+}
+.score_title{
+	font-size: 20px;
 }

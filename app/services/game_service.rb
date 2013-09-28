@@ -83,8 +83,9 @@ class GameService
     #   If success, will advance the game to the next turn
     #   If fail, will return without modifying the game state
     ##
-    def self.attempt_word( game, word_string, duration )
+    def self.attempt_word( game_id, word_string, duration )
         
+        game = Game.find game_id
         valid = false
 
         # do work lookup via our api

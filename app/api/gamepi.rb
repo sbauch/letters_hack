@@ -24,12 +24,12 @@ module Gamepi
         get ':game_id/word/:word' do
         
             GameService.attempt_word \
+                params[:game_id],
                 params[:word],
                 params[:device_token],
                 params[:duration] # in ms
             
-            return { 'status' => 'ok ' }
-
+            #return { 'status' => 'ok ' }
         end
 
         desc "Adds a new player to this game, returns the game object as a response"

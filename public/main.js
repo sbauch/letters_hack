@@ -27,10 +27,8 @@ function closeDialog(){
 			var word = response.current_word;
 
 			$('.letter-container').empty(); 
-			
 			for( var i = 0; i < word.length; i++ )
-			
-			$('.letter-container').append( '<p class="letters">' + word[i] + '</p>');
+				$('.letter-container').append( '<p class="letters">' + word[i] + '</p>');
 
 			$('#startGame').fadeOut();
 		}
@@ -41,4 +39,11 @@ function closeDialog(){
 function parseMessage( m )
 {
 	console.log(m);
+	var word = m.current_word;
+
+	$('.letter-container').empty(); 
+	for( var i = 0; i < word.length; i++ )
+	{
+		$('.letter-container').append( '<p class="letters">' + word[i] + '</p>');
+	}
 }

@@ -67,10 +67,9 @@ class GameService
         # @pn.publish \
         #     :channel => game_id.to_s.to_sym,
         #     :message => { 
-        #       :content_id => content.id.to_s,
-        #       :type => type,
-        #       :message => message.html_safe,
-        #       :acting_user => user.email
+        #       :game_id => game.id.to_s,
+        #       :current_word => game.current_word,
+        #       :current_player => game.current_player.user_name
         #     },
         #     :callback => my_callback
         

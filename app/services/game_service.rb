@@ -132,7 +132,7 @@ class GameService
 
         else
             puts ' --> updating word'
-            
+            advance = true
             # update current word and status
             round.current_word = word_string
             round.current_length = word_string.length

@@ -10,6 +10,25 @@
 
 <script src="js/jquery-1.9.1.js"></script>
 <script src="main.js"></script>
+
+<div id="pubnub" pub-key="pub-c-58c17d88-fbdf-4b60-87f8-94f63b5a4ee3" sub-key="sub-c-1649aff2-81cf-11e2-b64e-12313f022c90"></div>
+<script src="http://cdn.pubnub.com/pubnub-3.4.2.min.js"></script>
+<script>
+    (function(){
+    var pubnub = PUBNUB.init({
+        publish_key   : 'pub-c-58c17d88-fbdf-4b60-87f8-94f63b5a4ee3',
+        subscribe_key : 'sub-c-1649aff2-81cf-11e2-b64e-12313f022c90'
+      });
+    })();
+    // LISTEN
+     PUBNUB.subscribe({
+        channel         : 'game'
+        , message       : function(m){ parseMessage(m); }
+        , connect       : function() { }
+        , disconnect    : function() { }
+    });
+</script>
+
 </head>
 
 <body>

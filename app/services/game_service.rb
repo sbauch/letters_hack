@@ -60,22 +60,12 @@ class GameService
 
         round.current_player_id = game.players.first.id.to_s
         round.save!
-
-        # self.init_pubnub
-        # my_callback = lambda { |message| puts(message) }
-      
-        # @pn.publish \
-        #     :channel => game_id.to_s.to_sym,
-        #     :message => { 
-        #       :game_id => game.id.to_s,
-        #       :current_word => game.current_word,
-        #       :current_player => game.current_player.user_name
-        #     },
-        #     :callback => my_callback
         
         #
         # TODO -- send push to first player
         # 
+
+        game
     end
 
     ##
@@ -105,6 +95,25 @@ class GameService
             valid = false
         end
 
+        if valid
+            
+            game = Game.find game_id
+
+            self.init_pubnub
+            my_callback = lambda { |message| puts(message) }
+          
+            @pn.publish \
+                :channel => 'game',
+                :message => { 
+                  :game_id => game_id.to_s,
+                  :current_word => game.current_word,
+                  :current_player => game.current_player.user_name
+                },
+                :callback => my_callback
+
+
+        end
+
         valid
         
     end
@@ -132,9 +141,10 @@ class GameService
 
         else
             puts ' --> updating word'
-            
+            advance = true
             # update current word and status
             round.current_word = word_string
+            game.current_word = word_string #yes, this is correct and a HACK
             round.current_length = word_string.length
             
             round.words.create! \
@@ -146,17 +156,25 @@ class GameService
 
         if advance
             # update to the next player
-            index = round.players[round.current_player] + 1
-            round.current_player = game.players[index]
-            user = Installation.where(:deviceToken =>  round.current_player.udid).first
-            p user
-            data = { :alert => "There's a new Wiñata available! Start swinging now." }
-            push = Parse::Push.new(data, "")
-            push.type = "ios"
-            push.save
+            hash = Hash[game.players.map.with_index.to_a]
+            index = hash[round.current_player] + 1
+
+            if index >= game.players.count
+                index = 0
+            end
+
+            #index = game.players[round.current_player] + 1
+            round.current_player_id = game.players[index].id.to_s
+            # user = Installation.where(:deviceToken =>  round.current_player.udid).first
+            # p user
+            # data = { :alert => "alert!" }
+            # push = Parse::Push.new(data, "")
+            # push.type = "ios"
+            # push.save
         end
 
         round.save()
+        game.save()
 
         advance
     end

@@ -1,0 +1,11 @@
+development:
+  app_id: 1234567890
+  master_key: abcdefgh
+
+test:
+  app_id: 1234567890
+  master_key: abcdefgh
+
+production:
+  app_id: Kabo8I8ijvSFRk4x6W8TqC6I4iyZtAeGRVSu3DsQ
+  master_key: 9HbBQ6GXAt5fsKBgquZ59jgNhTx1vLT2hLHaFGN2

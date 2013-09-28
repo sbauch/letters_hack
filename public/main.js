@@ -21,7 +21,7 @@ function closeGameDialog(){
 	
 }
 function closeDialog(){
-	var id = '52474b26f99875f35c000001'; //game.id
+	var id = '52474dc1f998754411000001'; //game.id
 	$.ajax( './api/games/' + id + '/start', {
 		success: function(response){
 			var word = response.current_word;
@@ -35,4 +35,10 @@ function closeDialog(){
 			$('#startGame').fadeOut();
 		}
 	});
+}
+
+
+function parseMessage( m )
+{
+	console.log(m);
 }

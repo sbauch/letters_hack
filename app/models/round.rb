@@ -19,5 +19,9 @@ class Round
   # Track history
   field :turn_count, :type => Integer, :default => 0
 
+  def current_player
+    Player.find current_player_id
+  end
+
 
 end

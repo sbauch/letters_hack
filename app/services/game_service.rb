@@ -60,18 +60,6 @@ class GameService
 
         round.current_player_id = game.players.first.id.to_s
         round.save!
-
-        # self.init_pubnub
-        # my_callback = lambda { |message| puts(message) }
-      
-        # @pn.publish \
-        #     :channel => game_id.to_s.to_sym,
-        #     :message => { 
-        #       :game_id => game.id.to_s,
-        #       :current_word => game.current_word,
-        #       :current_player => game.current_player.user_name
-        #     },
-        #     :callback => my_callback
         
         #
         # TODO -- send push to first player
@@ -104,6 +92,22 @@ class GameService
 
         when 'abbreviation'
             valid = false
+        end
+
+        if valid
+            self.init_pubnub
+            my_callback = lambda { |message| puts(message) }
+          
+            @pn.publish \
+                :channel => 'game',
+                :message => { 
+                  :game_id => game_id.to_s,
+                  :current_word => game.current_word,
+                  :current_player => game.current_player.user_name
+                },
+                :callback => my_callback
+
+
         end
 
         valid

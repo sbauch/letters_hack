@@ -68,7 +68,7 @@ switch($error) {
 		$typeErr = "ABBREVIATION";
 }
 
-$returnarr = array('status-code' => $typeErr, 'word' => $json[$count][word], 'def' => $json[$count][text], 'part-of-speech' => $json[$count][partOfSpeech], 'audio-url' => $json2[0][fileUrl]);
+$returnarr = array('status_code' => $typeErr, 'word' => $json[$count][word], 'def' => $json[$count][text], 'part_of_speech' => $json[$count][partOfSpeech], 'audio_url' => $json2[0][fileUrl]);
 
 echo json_encode($returnarr);
 ?>

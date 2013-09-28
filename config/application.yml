@@ -1,0 +1,14 @@
+# config/application.yml
+defaults: &defaults
+  dictionary_api:
+    url: 'http://ec2-23-23-23-199.compute-1.amazonaws.com/'
+    
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

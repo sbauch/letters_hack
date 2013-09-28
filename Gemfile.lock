@@ -72,6 +72,10 @@ GEM
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
     i18n (0.6.1)
+    iron_core (1.0.1)
+      rest (>= 2.2.0)
+    iron_mq (4.0.3)
+      iron_core (>= 0.5.1)
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -91,7 +95,17 @@ GEM
     moped (1.5.1)
     multi_json (1.8.0)
     multi_xml (0.5.5)
+    net-http-persistent (2.9)
     origin (1.1.0)
+    parse-ruby-client (0.1.15)
+      iron_mq
+      patron
+    parse_resource (1.8.0)
+      activemodel
+      activesupport
+      json
+      rest-client
+    patron (0.4.18)
     polyglot (0.3.3)
     pubnub (3.3.0.6)
       activesupport
@@ -128,6 +142,11 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rest (2.6.3)
+      net-http-persistent
+      rest-client (>= 0.3.0)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sass (3.2.11)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -166,6 +185,8 @@ DEPENDENCIES
   httparty
   jquery-rails
   mongoid (~> 3.0.0)
+  parse-ruby-client
+  parse_resource (~> 1.8.0)
   pubnub
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)

@@ -107,7 +107,8 @@ class GameService
                 :message => { 
                   :game_id => game_id.to_s,
                   :current_word => game.current_word,
-                  :current_player => game.current_player.user_name
+                  :current_player => game.current_player.user_name,
+                  :current_def => game.current_round.words.last.def
                 },
                 :callback => my_callback
 
@@ -155,6 +156,7 @@ class GameService
         end
 
         if advance
+            p ' Turn advancing'
             # update to the next player
             hash = Hash[game.players.map.with_index.to_a]
             index = hash[round.current_player] + 1
@@ -163,14 +165,14 @@ class GameService
                 index = 0
             end
 
-            #index = game.players[round.current_player] + 1
             round.current_player_id = game.players[index].id.to_s
-            # user = Installation.where(:deviceToken =>  round.current_player.udid).first
-            # p user
-            # data = { :alert => "alert!" }
-            # push = Parse::Push.new(data, "")
-            # push.type = "ios"
-            # push.save
+            p round.current_player_id
+            user = Installation.where(:deviceToken =>  round.current_player.udid).first
+            p user
+            data = { :alert => round.current_word }
+            push = Parse::Push.new(data, "game_turn")
+            push.type = "ios"
+            push.save
         end
 
         round.save()

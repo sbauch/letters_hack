@@ -22,7 +22,7 @@ function closeGameDialog(){
 	
 }
 function closeDialog(){
-	var id = '52474dc1f998754411000001'; //game.id
+	var id = game._id;
 	$.ajax( './api/games/' + id + '/start', {
 		success: function(response){
 			var word = response.current_word;
@@ -30,6 +30,9 @@ function closeDialog(){
 			$('.letter-container').empty(); 
 			for( var i = 0; i < word.length; i++ )
 				$('.letter-container').append( '<p class="letters">' + word[i] + '</p>');
+
+			$('.word_title').html(word);
+			$('.def').html('');
 
 			$('#startGame').fadeOut();
 		}
@@ -39,7 +42,6 @@ function closeDialog(){
 
 function parseMessage( m )
 {
-	console.log(m);
 	var word = m.current_word;
 
 	$('.letter-container').empty(); 
@@ -47,4 +49,6 @@ function parseMessage( m )
 	{
 		$('.letter-container').append( '<p class="letters">' + word[i] + '</p>');
 	}
+	$('.word_title').html(word);
+	$('.def').html(m.current_def);
 }

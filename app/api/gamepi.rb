@@ -14,9 +14,9 @@ module Gamepi
         end
 
         desc "GET Create a new game"
-        get 'start' do
+        get ':game_id/start' do
             puts 'starting game..'
-            game = GameService.start
+            game = GameService.start params[:game_id]
         end
 
 
@@ -25,7 +25,7 @@ module Gamepi
         
             GameService.attempt_word \
                 params[:word],
-                params[:udid],
+                params[:device_token],
                 params[:duration] # in ms
             
             return { 'status' => 'ok ' }

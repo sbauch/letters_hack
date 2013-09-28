@@ -4,4 +4,9 @@ class User
   field :user_name, :type => String
   field :email, :type => String
 
+  #
+  # TODO -- parse specific fields here
+  #
+
+
 end

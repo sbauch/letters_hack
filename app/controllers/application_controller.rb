@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   
   def home
     # do nothin
+    puts 'home!'
   end
   
 end

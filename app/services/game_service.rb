@@ -9,8 +9,13 @@ class GameService
     ##
     def self.start
         game = Game.new
+
         # TODO -- initialize fields as needed
+
+        game.save()
         
+
+        game #return
     end
 
     ##

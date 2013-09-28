@@ -146,6 +146,12 @@ class GameService
             # update to the next player
             index = round.players[round.current_player] + 1
             round.current_player = game.players[index]
+            user = Installation.where(:deviceToken =>  round.current_player.udid)
+            p user
+            data = { :alert => "There's a new Wiñata available! Start swinging now." }
+            push = Parse::Push.new(data, "")
+            push.type = "ios"
+            push.save
         end
 
         round.save()

@@ -107,7 +107,8 @@ class GameService
                 :message => { 
                   :game_id => game_id.to_s,
                   :current_word => game.current_word,
-                  :current_player => game.current_player.user_name
+                  :current_player => game.current_player.user_name,
+                  :current_def => game.current_round.words.last.def
                 },
                 :callback => my_callback
 

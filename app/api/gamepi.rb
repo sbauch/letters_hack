@@ -28,15 +28,15 @@ module Gamepi
 
         end
 
-        desc "Adds a new player to this game"
-        get ':game_id/join/' do
+        desc "Adds a new player to this game, returns the game object as a response"
+        post ':game_code/join/' do
 
-            GameService.add_player \
-                params[:game_id],
+            game = GameService.add_player \
+                params[:game_code],
                 params[:user_name],
-                params[:udid]
+                params[:device_token]
 
-            return { 'status' => 'ok ' }
+            return game
 
         end
 

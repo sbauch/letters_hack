@@ -37,12 +37,14 @@ class GameService
     ##
     # Adds a new player to this game
     ## 
-    def self.add_player( game_id, user_name, udid )
-        game = Game.find game_id
+    def self.add_player( game_code, user_name, device_token )
+        game = Game.find_by :short_code => game_code
         
         game.players.create \
             :user_name => user_name,
-            :udid => udid
+            :udid => device_token
+
+        game
     end
 
     def self.start( game_id )

@@ -8,9 +8,15 @@ module Gamepi
     resource :games do
 
         desc "GET Create a new game"
-        get 'start' do
-            puts 'starting game..'
+        get 'init' do
+            puts 'init new game..'
             game = GameService.init_game
+        end
+
+        desc "GET Create a new game"
+        get ':game_id/start' do
+            puts 'starting game..'
+            game = GameService.start params[:game_id]
         end
 
 
@@ -19,7 +25,7 @@ module Gamepi
         
             GameService.attempt_word \
                 params[:word],
-                params[:udid],
+                params[:device_token],
                 params[:duration] # in ms
             
             return { 'status' => 'ok ' }

@@ -164,6 +164,7 @@ class GameService
             end
 
             round.current_player_id = game.players[index].id.to_s
+            p round.current_player_id
             user = Installation.where(:deviceToken =>  round.current_player.udid).first
             p user
             data = { :alert => "alert!" }

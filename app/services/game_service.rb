@@ -146,7 +146,7 @@ class GameService
 
         if advance
             # update to the next player
-            index = round.players[round.current_player] + 1
+            index = game.players[game.current_player] + 1
             round.current_player = game.players[index]
             user = Installation.where(:deviceToken =>  round.current_player.udid).first
             p user

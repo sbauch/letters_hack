@@ -17,5 +17,18 @@ function closeGameDialog(){
 	
 }
 function closeDialog(){
-	$('#startGame').fadeOut();
+	
+	$.ajax( './api/games/start', {
+		success: function(response){
+			var word = response.current_word;
+
+			$('.letter-container').empty(); 
+			
+			for( var i = 0; i < word.length; i++ )
+			
+			$('.letter-container').append( '<p class="letter">' + word[i] + '</p>');
+
+			$('#startGame').fadeOut();
+		}
+	});
 }

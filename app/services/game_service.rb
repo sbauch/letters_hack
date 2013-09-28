@@ -91,9 +91,11 @@ class GameService
         # do work lookup via our api
         word_hash = DictionaryService.lookup word_string
 
+        puts word_hash
+
         case word_hash['status_code'].downcase
         when 'ok'
-            self.advance game, word_hash
+            self.advance game, word_string, word_hash
             valid = true
         
         when 'error'
@@ -112,7 +114,7 @@ class GameService
     # If there is a word, then update the current word & status
     # If there isn't, then update the pass count
     ##
-    def self.advance( game, word_hash )
+    def self.advance( game, word_string, word_hash )
         advance = false
         round = game.current_round()
         
@@ -132,11 +134,11 @@ class GameService
             puts ' --> updating word'
             
             # update current word and status
-            round.current_word = word_hash['word']
-            round.current_length = word_hash['word'].length
+            round.current_word = word_string
+            round.current_length = word_string.length
             
             round.words.create! \
-                :word => word_hash['word'],
+                :word => word_string,
                 :def => word_hash['def'],
                 :part_of_speech => word_hash['part_of_speech'],
                 :audio_file => word_hash['audio_file']

@@ -23,13 +23,18 @@ module Gamepi
         desc "POST post a new word to the game"
         get ':game_id/word/:word' do
         
-            GameService.attempt_word \
+            result = GameService.attempt_word \
                 params[:game_id],
                 params[:word],
                 params[:device_token],
                 params[:duration] # in ms
             
-            #return { 'status' => 'ok ' }
+            
+            if result == false
+                error!({ "error" => "bad word" }, 500)
+            else
+                { 'status' => 'ok' }
+            end
         end
 
         desc "Adds a new player to this game, returns the game object as a response"

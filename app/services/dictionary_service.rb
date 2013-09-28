@@ -2,6 +2,7 @@
 # Dictionary Service
 #
 require 'httparty'
+require 'json'
 
 class DictionaryService
 
@@ -10,6 +11,11 @@ class DictionaryService
     ##
     def self.lookup( word )
         response = HTTParty.get Settings.dictionary_api.url + word
+
+        hash = JSON.parse response
+
+        puts hash
+        hash
     end
 
 end

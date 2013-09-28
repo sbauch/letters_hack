@@ -4,6 +4,7 @@ class Game
   
   embeds_many :turns
   has_many :rounds
+  has_many :players
 
   before_create :make_short_code
   
@@ -14,7 +15,7 @@ class Game
   field :start_time, :type => Date
   field :players, :type => Array
 
-  field :current_round_id, :type => Integer
+  field :current_round_id, :type => String, :default => ''
 
 
   def make_short_code
@@ -24,7 +25,11 @@ class Game
   end
 
   def current_round
-    @rounds.find @current_round_id
+    Round.find current_round_id
+  end
+
+  def current_player
+    current_round().current_player
   end
 
 end

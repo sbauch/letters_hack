@@ -1,8 +1,10 @@
-class User
+class Player
   include Mongoid::Document
 
-  field :user_name, :type => String
-  field :email, :type => String
+  belongs_to :game
+
+  field :user_name, :type => String, :default => ''
+  field :udid, :type => String, :default => ''
 
   #
   # TODO -- parse specific fields here

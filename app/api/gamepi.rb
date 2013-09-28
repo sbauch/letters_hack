@@ -17,6 +17,8 @@ module Gamepi
         get ':game_id/start' do
             puts 'starting game..'
             game = GameService.start params[:game_id]
+
+            game
         end
 
 

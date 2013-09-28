@@ -21,7 +21,7 @@ function closeGameDialog(){
 	
 }
 function closeDialog(){
-	var id = '52474dc1f998754411000001'; //game.id
+	var id = game._id;
 	$.ajax( './api/games/' + id + '/start', {
 		success: function(response){
 			var word = response.current_word;
@@ -38,7 +38,6 @@ function closeDialog(){
 
 function parseMessage( m )
 {
-	console.log(m);
 	var word = m.current_word;
 
 	$('.letter-container').empty(); 

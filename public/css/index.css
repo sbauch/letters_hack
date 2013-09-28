@@ -1,0 +1,64 @@
+#startGame{
+	position: absolute;
+	top: -999px;
+	width: 90%;
+	box-sizing: border-box;
+	padding: 10px;
+	left: 5%;
+	background: lightblue;
+	height: 50%;
+}
+#startGame h1{
+	width: 100%;
+	text-align: center;
+}
+#startGame button{
+	position: relative;
+	width: 20%;
+	top: 10%;
+	left: 40%;
+}
+body{
+	font-family: Lato;
+}
+#clock{
+	width: 30%;
+	background: lightgray;
+}
+#word{
+	width: 85%;
+	padding: 2.5%;
+	margin: 0 auto;
+}
+.letter-container{
+	background: red;
+	padding: 20% 0;
+}
+.letters{
+	border: solid white 1px;
+	background: green;
+	padding: 2.5vw 2.5vw;
+	width: 20%;
+	text-align: center;
+	display: inline;
+	margin: 0 auto;
+}
+#bottomContainer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+#word_def{
+	display: inline-table;
+	width: 30%;
+	left: 0;
+	background: lightgreen;
+}
+#scoreboard{
+	float: right;
+	display: inline-table;
+	width: 30%;
+	position: relative;
+	right: 0;
+	background: lightblue;
+}

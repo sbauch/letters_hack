@@ -8,9 +8,15 @@ module Gamepi
     resource :games do
 
         desc "GET Create a new game"
+        get 'init' do
+            puts 'init new game..'
+            game = GameService.init_game
+        end
+
+        desc "GET Create a new game"
         get 'start' do
             puts 'starting game..'
-            game = GameService.init_game
+            game = GameService.start
         end
 
 

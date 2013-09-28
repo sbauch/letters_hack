@@ -2,7 +2,13 @@
 # Game Service
 #
 
+require 'pubnub'
+
 class GameService
+
+    def self.init_pubnub
+        @pn = Pubnub.new(:publish_key => Settings.pubnub.publish_key, :subscribe_key => Settings.pubnub.subscribe_key) 
+    end
 
     ##
     # Starts a new game 
@@ -54,6 +60,19 @@ class GameService
 
         round.current_player_id = game.players.first.id.to_s
         round.save!
+
+        # self.init_pubnub
+        # my_callback = lambda { |message| puts(message) }
+      
+        # @pn.publish \
+        #     :channel => game_id.to_s.to_sym,
+        #     :message => { 
+        #       :content_id => content.id.to_s,
+        #       :type => type,
+        #       :message => message.html_safe,
+        #       :acting_user => user.email
+        #     },
+        #     :callback => my_callback
         
         #
         # TODO -- send push to first player

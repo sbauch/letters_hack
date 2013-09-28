@@ -76,6 +76,7 @@ class GameService
         #
         # TODO -- send push to first player
         # 
+        game
     end
 
     ##

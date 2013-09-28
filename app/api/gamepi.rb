@@ -7,17 +7,15 @@ module Gamepi
 
     resource :games do
 
-        desc "POST Create a new device"
-        post 'start' do
-
-            game = GameService.start()
-        
-            return game
+        desc "GET Create a new game"
+        get 'start' do
+            puts 'starting game..'
+            game = GameService.init_game
         end
 
 
         desc "POST post a new word to the game"
-        post ':game_id/word/:word' do
+        get ':game_id/word/:word' do
         
             GameService.attempt_word \
                 params[:word],
@@ -29,15 +27,16 @@ module Gamepi
         end
 
         desc "Adds a new player to this game, returns the game object as a response"
-        post ':game_code/join/' do
+        get ':game_code/join/' do
+
+            puts 'joining game..'
 
             game = GameService.add_player \
                 params[:game_code],
                 params[:user_name],
                 params[:device_token]
 
-            return game
-
+            game
         end
 
     end

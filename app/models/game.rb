@@ -1,7 +1,7 @@
 class Game
   include Mongoid::Document
   include Mongoid::Timestamps
-  
+    
   embeds_many :turns
   has_many :rounds
   has_many :players
@@ -16,6 +16,7 @@ class Game
   field :players, :type => Array
 
   field :current_round_id, :type => String, :default => ''
+  field :current_word, :type => String
 
 
   def make_short_code

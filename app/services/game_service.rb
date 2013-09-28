@@ -21,7 +21,8 @@ class GameService
             :current_word => word
 
         game.update_attributes \
-            :current_round_id => round.id.to_s
+            :current_round_id => round.id.to_s,
+            :current_word => word
 
         game #return
     end

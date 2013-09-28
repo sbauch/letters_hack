@@ -137,7 +137,7 @@ class GameService
 
         else
             puts ' --> updating word'
-            
+            advance = true
             # update current word and status
             round.current_word = word_string
             round.current_length = word_string.length
@@ -151,8 +151,14 @@ class GameService
 
         if advance
             # update to the next player
-            index = round.players[round.current_player] + 1
+            index = game.players[game.current_player] + 1
             round.current_player = game.players[index]
+            user = Installation.where(:deviceToken =>  round.current_player.udid).first
+            p user
+            data = { :alert => "There's a new Wiñata available! Start swinging now." }
+            push = Parse::Push.new(data, "")
+            push.type = "ios"
+            push.save
         end
 
         round.save()

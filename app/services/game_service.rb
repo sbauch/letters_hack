@@ -163,14 +163,13 @@ class GameService
                 index = 0
             end
 
-            #index = game.players[round.current_player] + 1
             round.current_player_id = game.players[index].id.to_s
-            # user = Installation.where(:deviceToken =>  round.current_player.udid).first
-            # p user
-            # data = { :alert => "alert!" }
-            # push = Parse::Push.new(data, "")
-            # push.type = "ios"
-            # push.save
+            user = Installation.where(:deviceToken =>  round.current_player.udid).first
+            p user
+            data = { :alert => "alert!" }
+            push = Parse::Push.new(data, "")
+            push.type = "ios"
+            push.save
         end
 
         round.save()

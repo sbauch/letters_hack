@@ -7,7 +7,7 @@ class GameService
     ##
     # Starts a new game 
     ##
-    def self.create
+    def self.init_game
         
         # TODO -- randomaly generated a 3 letter word
         word = 'cat'
